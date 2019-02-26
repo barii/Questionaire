@@ -1,0 +1,9 @@
+# POST add question
+curl -i -X POST -H "Content-Type:application/json" http://localhost:5000/api/qu{"id":"CA761232-ED42-11CE-BACD-00AA0057B223", "type":"multichoice", "text":"multi1", "description":"haha", "choices": [{"id":"CA761232-ED42-11CE-BACD-00AA0057B223", "value":"first"},{"id":"CA761232-ED42-11CE-BACD-00AA0057B223", "value":"second"}] }'
+
+
+
+
+
+
+

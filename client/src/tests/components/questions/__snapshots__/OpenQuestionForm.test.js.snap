@@ -1,0 +1,518 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render OpenQuestionForm correctly (snapshot) 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <OpenQuestionForm
+    errors={true}
+    onChange={[Function]}
+    onSubmit={[Function]}
+    question={
+        Object {
+            "description": "desc",
+            "id": "1",
+            "text": "haha",
+            "type": "OpenQuestion",
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <Card
+        tag="div"
+>
+        <CardHeader
+                tag="div"
+        >
+                Open Question
+        </CardHeader>
+        <CardBody
+                tag="div"
+        >
+                <Form
+                        onSubmit={[Function]}
+                        tag="form"
+                >
+                        <TextFieldGroup
+                                error={undefined}
+                                label="Text"
+                                name="text"
+                                onChange={[Function]}
+                                type="text"
+                                value="haha"
+                        />
+                        <TextFieldGroup
+                                error={undefined}
+                                label="Description"
+                                name="description"
+                                onChange={[Function]}
+                                type="text"
+                                value="desc"
+                        />
+                        <Button
+                                color="success"
+                                tag="button"
+                                type="submit"
+                        >
+                                Save
+                        </Button>
+                </Form>
+        </CardBody>
+</Card>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <CardHeader
+            tag="div"
+>
+            Open Question
+</CardHeader>,
+          <CardBody
+            tag="div"
+>
+            <Form
+                        onSubmit={[Function]}
+                        tag="form"
+            >
+                        <TextFieldGroup
+                                    error={undefined}
+                                    label="Text"
+                                    name="text"
+                                    onChange={[Function]}
+                                    type="text"
+                                    value="haha"
+                        />
+                        <TextFieldGroup
+                                    error={undefined}
+                                    label="Description"
+                                    name="description"
+                                    onChange={[Function]}
+                                    type="text"
+                                    value="desc"
+                        />
+                        <Button
+                                    color="success"
+                                    tag="button"
+                                    type="submit"
+                        >
+                                    Save
+                        </Button>
+            </Form>
+</CardBody>,
+        ],
+        "tag": "div",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "Open Question",
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": "Open Question",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Form
+              onSubmit={[Function]}
+              tag="form"
+>
+              <TextFieldGroup
+                            error={undefined}
+                            label="Text"
+                            name="text"
+                            onChange={[Function]}
+                            type="text"
+                            value="haha"
+              />
+              <TextFieldGroup
+                            error={undefined}
+                            label="Description"
+                            name="description"
+                            onChange={[Function]}
+                            type="text"
+                            value="desc"
+              />
+              <Button
+                            color="success"
+                            tag="button"
+                            type="submit"
+              >
+                            Save
+              </Button>
+</Form>,
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <TextFieldGroup
+                  error={undefined}
+                  label="Text"
+                  name="text"
+                  onChange={[Function]}
+                  type="text"
+                  value="haha"
+/>,
+                <TextFieldGroup
+                  error={undefined}
+                  label="Description"
+                  name="description"
+                  onChange={[Function]}
+                  type="text"
+                  value="desc"
+/>,
+                <Button
+                  color="success"
+                  tag="button"
+                  type="submit"
+>
+                  Save
+</Button>,
+              ],
+              "onSubmit": [Function],
+              "tag": "form",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "error": undefined,
+                  "label": "Text",
+                  "name": "text",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": "haha",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "error": undefined,
+                  "label": "Description",
+                  "name": "description",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": "desc",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Save",
+                  "color": "success",
+                  "tag": "button",
+                  "type": "submit",
+                },
+                "ref": null,
+                "rendered": "Save",
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <Card
+          tag="div"
+>
+          <CardHeader
+                    tag="div"
+          >
+                    Open Question
+          </CardHeader>
+          <CardBody
+                    tag="div"
+          >
+                    <Form
+                              onSubmit={[Function]}
+                              tag="form"
+                    >
+                              <TextFieldGroup
+                                        error={undefined}
+                                        label="Text"
+                                        name="text"
+                                        onChange={[Function]}
+                                        type="text"
+                                        value="haha"
+                              />
+                              <TextFieldGroup
+                                        error={undefined}
+                                        label="Description"
+                                        name="description"
+                                        onChange={[Function]}
+                                        type="text"
+                                        value="desc"
+                              />
+                              <Button
+                                        color="success"
+                                        tag="button"
+                                        type="submit"
+                              >
+                                        Save
+                              </Button>
+                    </Form>
+          </CardBody>
+</Card>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <CardHeader
+              tag="div"
+>
+              Open Question
+</CardHeader>,
+            <CardBody
+              tag="div"
+>
+              <Form
+                            onSubmit={[Function]}
+                            tag="form"
+              >
+                            <TextFieldGroup
+                                          error={undefined}
+                                          label="Text"
+                                          name="text"
+                                          onChange={[Function]}
+                                          type="text"
+                                          value="haha"
+                            />
+                            <TextFieldGroup
+                                          error={undefined}
+                                          label="Description"
+                                          name="description"
+                                          onChange={[Function]}
+                                          type="text"
+                                          value="desc"
+                            />
+                            <Button
+                                          color="success"
+                                          tag="button"
+                                          type="submit"
+                            >
+                                          Save
+                            </Button>
+              </Form>
+</CardBody>,
+          ],
+          "tag": "div",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "Open Question",
+              "tag": "div",
+            },
+            "ref": null,
+            "rendered": "Open Question",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <Form
+                onSubmit={[Function]}
+                tag="form"
+>
+                <TextFieldGroup
+                                error={undefined}
+                                label="Text"
+                                name="text"
+                                onChange={[Function]}
+                                type="text"
+                                value="haha"
+                />
+                <TextFieldGroup
+                                error={undefined}
+                                label="Description"
+                                name="description"
+                                onChange={[Function]}
+                                type="text"
+                                value="desc"
+                />
+                <Button
+                                color="success"
+                                tag="button"
+                                type="submit"
+                >
+                                Save
+                </Button>
+</Form>,
+              "tag": "div",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <TextFieldGroup
+                    error={undefined}
+                    label="Text"
+                    name="text"
+                    onChange={[Function]}
+                    type="text"
+                    value="haha"
+/>,
+                  <TextFieldGroup
+                    error={undefined}
+                    label="Description"
+                    name="description"
+                    onChange={[Function]}
+                    type="text"
+                    value="desc"
+/>,
+                  <Button
+                    color="success"
+                    tag="button"
+                    type="submit"
+>
+                    Save
+</Button>,
+                ],
+                "onSubmit": [Function],
+                "tag": "form",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "error": undefined,
+                    "label": "Text",
+                    "name": "text",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "haha",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "error": undefined,
+                    "label": "Description",
+                    "name": "description",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "desc",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Save",
+                    "color": "success",
+                    "tag": "button",
+                    "type": "submit",
+                  },
+                  "ref": null,
+                  "rendered": "Save",
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;

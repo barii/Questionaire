@@ -1,0 +1,13 @@
+{
+  "name": "@bit/bit.envs.testers.mocha",
+  "version": "0.0.14",
+  "homepage": "https://bitsrc.io/bit/envs/testers/mocha",
+  "main": "dist/index.js",
+  "dependencies": {
+    "jsdom": "~11.11.0",
+    "mocha": "^5.0.2"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE"
+}
