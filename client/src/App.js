@@ -31,7 +31,7 @@ import './App.css';
 
 // import OpenQuestion from './components/questions/OpenQuestion'
 // import MultichoiceQuestion from './components/questions/MultichoiceQuestion'
-import Sheet from './components/questions/Sheet'
+import Sheet from './components/questions/Sheet';
 
 // Check for token
 // if (localStorage.jwtToken) {
@@ -83,7 +83,7 @@ class App extends Component {
           <Sheet />
         </div>
       </Provider>
-    )
+    );
 
 //     return (
 //       <Provider store={store}>

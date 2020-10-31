@@ -41,7 +41,7 @@ class AddQuestionPage extends React.Component {
         </Jumbotron>
         
       </div>
-    )
+    );
   };
 }
 

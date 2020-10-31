@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { Jumbotron, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import OpenQuestion from './OpenQuestion'

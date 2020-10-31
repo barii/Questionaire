@@ -12,6 +12,6 @@ export default class JokeGenerator extends React.Component {
       <React.Fragment>
         {!joke && <div>You haven't loaded any jokes yet!</div>}
       </React.Fragment>
-    )
+    );
   }
 }
