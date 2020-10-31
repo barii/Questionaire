@@ -12,7 +12,8 @@ const ListFieldGroup = ({
   onChange,
   disabled,
 }) => {
-  if (error)console.log(error[Object.keys(error)[0]])
+  if (error)console.log(error[Object.keys(error)[0]]);
+  
   return (
     <div className="form-group">
       {label && <label htmlFor={name}>{label}</label>}

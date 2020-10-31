@@ -57,7 +57,7 @@ class AddOpenQuestionForm extends React.Component {
           <input type="submit" bsStyle="success"></input>
         </Form>
       </div>
-    )
+    );
   }
 }
 

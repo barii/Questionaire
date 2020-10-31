@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addMultichoiceQuestion } from '../../actions/multichoiceQuestion';
 import { Form, Button, FormControl, FormGroup, Col, ControlLabel } from 'react-bootstrap';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 class AddMultichoiceQuestionForm extends React.Component {
   constructor(props) {
@@ -103,7 +103,7 @@ class AddMultichoiceQuestionForm extends React.Component {
           <Button bsStyle="success"  type="submit">Add</Button>
         </Form>
       </div>
-    )
+    );
   }
 }
 

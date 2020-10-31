@@ -35,12 +35,12 @@ class MultichoiceQuestion extends React.Component {
       return <MultichoiceQuestionFormContainer
         question={this.props.question} 
         onSubmit={this.onSubmit}
-      />
+      />;
     } else {
       return <MultichoiceQuestionPanel 
         question={this.props.question} 
         onEdit={this.onEdit}
-      />
+      />;
     }
   }
 }
