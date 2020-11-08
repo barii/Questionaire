@@ -1,12 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../mongoDb').get;
+const questions = require('../../mongoDb').get.collection('questions');
 //const passport = require('passport');
-
-// Post model
-//const Post = require('../../models/Post');
-// Profile model
-//const Profile = require('../../models/Profile');
 
 // Validation
 const validateQuestionInput = require('../../validation/question');
@@ -20,21 +15,11 @@ router.get('/user', function(req, res){
   res.send(200, { name: 'marcus' });
 });
 
-// // @route   GET api/posts
-// // @desc    Get posts
-// // @access  Public
-// router.get('/', (req, res) => {
-//   Post.find()
-//     .sort({ date: -1 })
-//     .then(posts => res.json(posts))
-//     .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
-// });
-
 // @route   GET api/questions/
 // @desc    Get post by id
 // @access  Public
 router.get('/', (req, res) => {
-  db().collection('questions').find({}).toArray((err, questions) => {
+  questions.find({}).toArray((err, questions) => {
     if(err) {
       return res.status(400).json(err);
     } else {
@@ -47,7 +32,7 @@ router.get('/', (req, res) => {
 // @desc    Get post by id
 // @access  Public
 router.get('/:id', (req, res) => {
-  db().collection('questions').findOne({id: req.params.id}, (err, question) => {
+  questions.findOne({id: req.params.id}, (err, question) => {
 
     if(err) {
       return res.status(400).json(err);
@@ -68,7 +53,7 @@ router.post(
   (req, res) => {
     validateQuestionInput(req.body.post)
       .then((question) => {
-        db().collection('questions').insertOne(question, (err, result) => {
+        questions.insertOne(question, (err, result) => {
           if (err) { 
             console.log(err)
             return res.status(400).send(err);
@@ -92,7 +77,7 @@ router.put(
   (req, res) => {
     validateQuestionInput(req.body.post)
       .then((question) => {
-        db().collection('questions').replaceOne({_id: req.body.post._id}, question, (err, result) => {
+        questions.replaceOne({_id: req.body.post._id}, question, (err, result) => {
           if (err) { 
             console.log(err)
             return res.status(500).send(err);

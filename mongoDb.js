@@ -7,8 +7,7 @@ connect = (url, dbname, done) => {
   MongoClient.connect(url, {useNewUrlParser: true})
     .catch(error => reject(error))
     .then(client => {
-      const db = client.db(dbname);
-      _db = db
+      _db = client.db(dbname);
       done();
   });
 };

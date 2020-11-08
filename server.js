@@ -5,12 +5,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 
-//const questions = require('./routes/api/questions');
 const mongo = require('./mongoDb');
 
-// const users = require('./routes/api/users');
-// const profile = require('./routes/api/profile');
-// const posts = require('./routes/api/posts');
 const questions = require('./routes/api/questions');
 
 const app = require('express')();
@@ -44,7 +40,6 @@ app.use(morgan(loggerFormat, {
   stream: process.stdout
 }));
 
-
 // Passport middleware
 //app.use(passport.initialize());
 
@@ -53,9 +48,6 @@ app.use(morgan(loggerFormat, {
 
   // Use Routes
 app.use('/api/questions', questions);
-  // app.use('/api/users', users);
-  // app.use('/api/profile', profile);
-  // app.use('/api/posts', posts);
 
 // DB Config
 const mongoURI = require('./config/keys').mongoURI;
