@@ -8,14 +8,14 @@ const schemas = {
       _id: Joi.string().uuid().required(),
       type: Joi.string().required(),
       text: Joi.string().required(),
-      description: Joi.string(),
+      description: Joi.string().allow(''),
     }),
   'multichoice' : 
     Joi.object().keys({
       _id: Joi.string().uuid().required(),
       type: Joi.string().required(),
       text: Joi.string().required(),
-      description: Joi.string(),
+      description: Joi.string().allow(''),
       choices: Joi.array().required().items(
         Joi.object().required().keys({
           _id: Joi.string().uuid().required(),
@@ -28,15 +28,9 @@ const schemas = {
 
 module.exports = (data) => {
   const schema = schemas[data.type];
-  if (!schema) reject("incorrect question type")
 
-  return new Promise(function(resolve, reject) {
-    Joi.validate(data, schema, {allowUnknown: false, abortEarly:false}, (err, result) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(result);
-      }
-    });
-  });
+
+  return (schema)
+    ? schema.validateAsync(data, {allowUnknown: false, abortEarly:false})
+    : Promise.reject(new Error("incorrect question type"))
 };

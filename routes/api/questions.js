@@ -66,7 +66,7 @@ router.post(
   '/',
 //  passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    validateQuestionInput(req.body)
+    validateQuestionInput(req.body.post)
       .then((question) => {
         db().collection('questions').insertOne(question, (err, result) => {
           if (err) { 
@@ -86,15 +86,13 @@ router.post(
 // @route   POST api/questions
 // @desc    Create post
 // @access  Private
-router.patch(
+router.put(
   '/:id',
 //  passport.authenticate('jwt', { session: false }),
   (req, res) => {
-       
-    validateQuestionInput(req.body)
+    validateQuestionInput(req.body.post)
       .then((question) => {
-        console.log(req.params.id);
-        db().collection('questions').replaceOne({id: req.params.id}, question, (err, result) => {
+        db().collection('questions').replaceOne({_id: req.body.post._id}, question, (err, result) => {
           if (err) { 
             console.log(err)
             return res.status(500).send(err);
@@ -103,7 +101,7 @@ router.patch(
         })
       })
       .catch((err) => {//if (!isValid) {
-        console.log(err.annotate())
+        console.log(err);
         return res.status(400).json(err);
       })
   }
@@ -116,7 +114,7 @@ router.delete(
   '/:id',
   //passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    db().collection('questions').deleteMany({id: req.params.id}, (err, obj) => {
+    db().collection('questions').deleteMany({id: req.body.post._id}, (err, obj) => {
       if (err) {
         return res.status(400).json(err)
       } else if (obj.result.n==0) {
