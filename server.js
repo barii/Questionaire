@@ -1,7 +1,30 @@
 const path = require('path');
+const morgan = require('morgan');
 const mongo = require('./mongoDb');
 
 const { app } = require('./app');
+
+
+morgan.token('id', function getId(req) {
+  return req.id
+});
+
+//app.use(morgan('dev'));   
+var loggerFormat = ':id [:date[web]] ":method :url" :status :response-time';
+
+app.use(morgan(loggerFormat, {
+  skip: function (req, res) {
+      return res.statusCode < 400
+  },
+  stream: process.stderr
+}));
+
+app.use(morgan(loggerFormat, {
+  skip: function (req, res) {
+      return res.statusCode >= 400
+  },
+  stream: process.stdout
+}));
 
 // DB Config
 const mongoURI = require('./config/keys').mongoURI;
