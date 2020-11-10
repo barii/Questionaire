@@ -1,0 +1,5 @@
+module.exports = {
+  mongoURI: "mongodb://user:password@ds145484.mlab.com:45484/questionnaire",
+  mongoDB: "questionnaire",
+  secretOrKey: 'secret'
+}
