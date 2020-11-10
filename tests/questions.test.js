@@ -57,9 +57,9 @@ describe('POST /questions', () => {
 
 
   it('should create a new open question', (done) => {
-    uuid = uuid();
+    id = uuid();
     const openQuestion = {
-      _id: uuid,
+      _id: id,
       type: "open",
       text: "haha",
       description: "desc"
@@ -79,7 +79,7 @@ describe('POST /questions', () => {
           return done(err);
         }
 
-        db.collection('questions').findOne({_id: uuid}, (err, res) => {
+        db.collection('questions').findOne({_id: id}, (err, res) => {
           if (err) return done(err);
 
           expect(res.text).toBe(openQuestion.text);
@@ -89,9 +89,9 @@ describe('POST /questions', () => {
   });
 
   it('should create a new multichoice question', (done) => {
-    uuid = uuid();
+    id = uuid();
     const question = {
-      _id: uuid,
+      _id: id,
       type: "multichoice",
       text: "testMultichoiceQuestion",
       description: "testMultichoiceQuestionDescription",
@@ -116,7 +116,7 @@ describe('POST /questions', () => {
           return done(err);
         }
 
-        db.collection('questions').findOne({_id: uuid}, (err, res) => {
+        db.collection('questions').findOne({_id: id}, (err, res) => {
           if (err) return done(err);
 
           expect(res.text).toBe(question.text);
