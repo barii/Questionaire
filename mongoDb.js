@@ -24,11 +24,16 @@ get = () => {
   return _db;
 }
 
+questions = () => _db.collection('questions');
+
+
 close = () => {
   _client.close();
 }
 
 module.exports = {
+  questions,
+
   connect,
   get,
   close
