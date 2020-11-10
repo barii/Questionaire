@@ -12,7 +12,7 @@ module.exports = class MongoEnvironment extends NodeEnvironment {
     console.log('Setup MongoDB Test Environment');
 
     const globalConfig = JSON.parse(fs.readFileSync(globalConfigPath, 'utf-8'));
-    console.log(globalConfig);
+    //console.log(globalConfig);
     this.global.__MONGO_URI__ = globalConfig.mongoUri;
     this.global.__MONGO_DB_NAME__ = globalConfig.mongoDBName;
 

@@ -1,16 +1,20 @@
 const { MongoClient } = require('mongodb');
 
-let connection;
+let client;
 let db;
 
 beforeEach(async () => {
-  connection = await MongoClient.connect(global.__MONGO_URI__, { useNewUrlParser: true } );
-  db = await connection.db(global.__MONGO_DB_NAME__);
+  client = new MongoClient(global.__MONGO_URI__, { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+  await client.connect();
+  db = await client.db(global.__MONGO_DB_NAME__);
 });
 
 afterEach(async () => {
   //await db.close();
-  await connection.close();
+  await client.close();
 });
 
 it('should aggregate docs from collection', async () => {

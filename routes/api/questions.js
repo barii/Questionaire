@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const questions = require('../../mongoDb').get.collection('questions');
+const db = require('../../mongoDb');
 //const passport = require('passport');
 
 // Validation
@@ -11,19 +11,19 @@ const validateQuestionInput = require('../../validation/question');
 // @access  Public
 router.get('/test', (req, res) => res.json({ msg: 'Questions Works' }));
 
-router.get('/user', function(req, res){
-  res.send(200, { name: 'marcus' });
+router.get('/user', function(req, res) {
+  res.status(200).json({ name: 'john' });
 });
 
 // @route   GET api/questions/
 // @desc    Get post by id
 // @access  Public
 router.get('/', (req, res) => {
-  questions.find({}).toArray((err, questions) => {
+  db.get().collection('questions').find({}).toArray((err, questions) => {
     if(err) {
       return res.status(400).json(err);
     } else {
-      res.json(questions);
+      return res.json(questions);
     }
   });
 });
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
 // @desc    Get post by id
 // @access  Public
 router.get('/:id', (req, res) => {
-  questions.findOne({id: req.params.id}, (err, question) => {
+  db.get().collection('questions').findOne({id: req.params.id}, (err, question) => {
 
     if(err) {
       return res.status(400).json(err);
@@ -51,9 +51,9 @@ router.post(
   '/',
 //  passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    validateQuestionInput(req.body.post)
+    validateQuestionInput(req.body)
       .then((question) => {
-        questions.insertOne(question, (err, result) => {
+        db.get().collection('questions').insertOne(question, (err, result) => {
           if (err) { 
             console.log(err)
             return res.status(400).send(err);
@@ -75,9 +75,9 @@ router.put(
   '/:id',
 //  passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    validateQuestionInput(req.body.post)
+    validateQuestionInput(req.body)
       .then((question) => {
-        questions.replaceOne({_id: req.body.post._id}, question, (err, result) => {
+        db.get().collection('questions').replaceOne({_id: req.body._id}, question, (err, result) => {
           if (err) { 
             console.log(err)
             return res.status(500).send(err);
@@ -99,7 +99,7 @@ router.delete(
   '/:id',
   //passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    db().collection('questions').deleteMany({id: req.body.post._id}, (err, obj) => {
+    db.get().collection('questions').deleteMany({id: req.body.post._id}, (err, obj) => {
       if (err) {
         return res.status(400).json(err)
       } else if (obj.result.n==0) {
@@ -111,7 +111,7 @@ router.delete(
   }
 );
 
-module.exports = router;
+ module.exports = router;
 
 
 // // DON'T
