@@ -16,6 +16,21 @@ connect = (url, dbname, done) => {
   .catch(console.error);
 };
 
+connect = async (url, dbname) => {
+  try {
+
+    _client = await MongoClient.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    _db = await _client.db(dbname);
+    return _db;
+  }
+  catch (e) {
+    throw e;
+  };
+};
+
 get = () => {
   if(!_db) {
       throw new Error('Call connect first!');
@@ -27,8 +42,8 @@ get = () => {
 questions = () => _db.collection('questions');
 
 
-close = () => {
-  _client.close();
+close = async () => {
+  await _client.close();
 }
 
 module.exports = {

@@ -28,15 +28,14 @@ router.get('/', (req, res) => {
 // @desc    Get post by id
 // @access  Public
 router.get('/:id', (req, res) => {
-  questions().findOne({id: req.params.id}, (err, question) => {
-
-    if(err) {
-      return res.status(400).json(err);
-    } else if (!question) {
+  questions().findOne({_id: req.params.id}).then(question => {
+    if (!question) {
       return res.status(404).json({ notfound: 'No question found with that ID' })
     } else {
-      res.json(question);
+      return res.json(question)
     }
+  }).catch(err => {
+    return res.status(400).json(err)
   });
 });
 
@@ -47,20 +46,19 @@ router.post(
   '/',
 //  passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    validateQuestionInput(req.body)
-      .then((question) => {
-        questions().insertOne(question, (err, result) => {
-          if (err) { 
-            console.log(err)
-            return res.status(400).send(err);
-          }
-          res.json(result.ops[0])
-        })
-      })  
-      .catch((err) => {//if (!isValid) {
-        console.log(err);
-        return res.status(400).json(err);
+    validateQuestionInput(req.body).then((question) => {
+      questions().insertOne(question, (err, result) => {
+        if (err) { 
+          console.log(err.message)
+          return res.status(400).send(err.message);
+        }
+        res.json(result.ops[0]) 
       })
+    })  
+    .catch((err) => {
+      console.log
+      res.status(400).json(err)
+    });
   }
 );
 
@@ -72,19 +70,10 @@ router.put(
 //  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     validateQuestionInput(req.body)
-      .then((question) => {
-        questions().replaceOne({_id: req.body._id}, question, (err, result) => {
-          if (err) { 
-            console.log(err)
-            return res.status(500).send(err);
-          }
-          res.json(result.ops[0])
-        })
-      })
-      .catch((err) => {//if (!isValid) {
-        console.log(err);
-        return res.status(400).json(err);
-      })
+      .then( question => questions().replaceOne({_id: req.body._id}, question))
+      .catch(err => res.status(400).json(err))
+      .then (result => res.json(result.ops[0]))
+      .catch(err => res.status(500).send(err))
   }
 );
 

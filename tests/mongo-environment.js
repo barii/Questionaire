@@ -9,7 +9,7 @@ module.exports = class MongoEnvironment extends NodeEnvironment {
   }
 
   async setup() {
-    console.log('Setup MongoDB Test Environment');
+//    console.log('Setup MongoDB Test Environment');
 
     const globalConfig = JSON.parse(fs.readFileSync(globalConfigPath, 'utf-8'));
     //console.log(globalConfig);
@@ -20,7 +20,7 @@ module.exports = class MongoEnvironment extends NodeEnvironment {
   }
 
   async teardown() {
-    console.log('Teardown MongoDB Test Environment');
+//    console.log('Teardown MongoDB Test Environment');
 
     await super.teardown();
   }
