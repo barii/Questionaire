@@ -15,28 +15,26 @@ router.get('/test', (req, res) => res.json({ msg: 'Questions Works' }));
 // @desc    Get post by id
 // @access  Public
 router.get('/', (req, res) => {
-  questions().find({}).toArray((err, questions) => {
-    if(err) {
-      return res.status(400).json(err);
-    } else {
-      return res.json(questions);
-    }
-  });
+  questions().find({}).toArray()
+    .then(questions => res.json(questions))
+    .catch(err => res.status(400).json(err))
 });
 
 // @route   GET api/questions/:id
 // @desc    Get post by id
 // @access  Public
 router.get('/:id', (req, res) => {
-  questions().findOne({_id: req.params.id}).then(question => {
-    if (!question) {
-      return res.status(404).json({ notfound: 'No question found with that ID' })
-    } else {
-      return res.json(question)
-    }
-  }).catch(err => {
-    return res.status(400).json(err)
-  });
+  questions().findOne({ _id: req.params.id })
+    .then(question => {
+      if (!question) {
+        return res.status(404).json({ notfound: 'No question found with that ID' })
+      } else {
+        return res.json(question)
+      }
+    })
+    .catch(err => {
+      return res.status(400).json(err)
+    });
 });
 
 // @route   POST api/questions
@@ -44,36 +42,44 @@ router.get('/:id', (req, res) => {
 // @access  Private
 router.post(
   '/',
-//  passport.authenticate('jwt', { session: false }),
+  //  passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    validateQuestionInput(req.body).then((question) => {
-      questions().insertOne(question, (err, result) => {
-        if (err) { 
-          console.log(err.message)
-          return res.status(400).send(err.message);
-        }
-        res.json(result.ops[0]) 
-      })
-    })  
-    .catch((err) => {
-      console.log
-      res.status(400).json(err)
-    });
+    validateQuestionInput(req.body)
+      .then(question => questions().insertOne(question))
+      .then(result => res.json(result.ops[0]))
+      .catch(err => res.status(400).json(
+        (err.isJoi) ?
+          {
+            "message": "validation error",
+            "details": err.details
+          } :
+          {
+            "message": err.message
+          }
+      ))
   }
 );
 
-// @route   POST api/questions
-// @desc    Create post
+// @route   PUT api/questions
+// @desc    Update post
 // @access  Private
 router.put(
   '/:id',
-//  passport.authenticate('jwt', { session: false }),
+  //  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     validateQuestionInput(req.body)
-      .then( question => questions().replaceOne({_id: req.body._id}, question))
-      .catch(err => res.status(400).json(err))
-      .then (result => res.json(result.ops[0]))
-      .catch(err => res.status(500).send(err))
+      .then(question => questions().replaceOne({ _id: req.body._id }, question))
+      .then(result => res.json(result.ops[0]))
+      .catch(err => res.status(400).json(
+        (err.isJoi) ?
+          {
+            "message": "validation error",
+            "details": err.details
+          } :
+          {
+            "message": err.message
+          }
+      ))
   }
 );
 
@@ -84,45 +90,15 @@ router.delete(
   '/:id',
   //passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    questions().deleteMany({id: req.body.post._id}, (err, obj) => {
-      if (err) {
-        return res.status(400).json(err)
-      } else if (obj.result.n==0) {
-        return res.status(404).json({ notfound: 'No question found with that ID' })
-      }
-
-      res.end();
-    });
+    questions().deleteOne({ _id: req.params.id })
+      .then(result => res.json(result))
+      .catch(err =>
+        res.status(400).json(err)
+        // } else if (obj.result.n==0) {
+        //   return res.status(404).json({ notfound: 'No question found with that ID' })
+        // }
+      )
   }
 );
 
- module.exports = router;
-
-
-// // DON'T
-// function getUserRouteHandler (req, res) {
-//   const { userId } = req.params
-//   // inline SQL query
-//   knex('user')
-//     .where({ id: userId })
-//     .first()
-//     .then((user) => res.json(user))
-// }
-
-// // DO
-// // User model (eg. models/user.js)
-// const tableName = 'user'
-// const User = {
-//   getOne (userId) {
-//     return knex(tableName)
-//       .where({ id: userId })
-//       .first()
-//   }
-// }
-
-// // route handler (eg. server/routes/user/get.js)
-// function getUserRouteHandler (req, res) {
-//   const { userId } = req.params
-//   User.getOne(userId)
-//     .then((user) => res.json(user))
-// }
+module.exports = router;
